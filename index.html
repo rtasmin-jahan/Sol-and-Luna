@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOL and LUNA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --beige: #f5f5dc;
+            --bottle-green: #006a4e;
+            --valentines-red: #d63031;
+        }
+
+        body {
+            background-color: var(--beige);
+            color: var(--bottle-green);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        h1, h2, .fancy-font {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .full-screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .btn-custom {
+            background-color: var(--bottle-green);
+            color: var(--beige);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-no {
+            background-color: var(--valentines-red);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+        }
+
+        /* Carousel Styling */
+        #photoSection { display: none; }
+        .carousel-item img {
+            height: 450px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 8px solid var(--bottle-green);
+        }
+
+        #finalSection { display: none; }
+        .lily-container img {
+            max-width: 350px;
+            filter: drop-shadow(0 10px 15px rgba(0,106,78,0.2));
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <section id="questionSection" class="full-screen animate__animated animate__fadeIn">
+        <h1 class="display-3 mb-4">Amar Isbat,</h1>
+        <p class="lead mb-4">Valentine to bogus jinish</p>
+        <h2 class="mb-5">Will you be my Jamai... forever?</h2>
+        
+        <div class="d-flex gap-3 position-relative">
+            <button class="btn btn-custom btn-lg shadow" onclick="handleYes()">Yes, Forever! ❤️</button>
+            <button id="noBtn" class="btn btn-no btn-lg shadow" onclick="handleNo()">No</button>
+        </div>
+    </section>
+
+    <section id="photoSection" class="full-screen animate__animated animate__fadeIn">
+        <h2 class="fancy-font mb-4">Dekh Isbat r Resha kotto happy</h2>
+        <div id="loveCarousel" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner" style="max-width: 500px; border-radius: 10px;">
+                <div class="carousel-item active">
+                    <img class="w-100" src="img/1.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/2.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/3.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/4.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/5.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/6.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/7.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/8.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/9.jpeg">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/10.jpeg">
+                </div>
+                </div>
+        </div>
+        <button class="btn btn-custom btn-lg" onclick="showFinal()">I have one more thing... →</button>
+    </section>
+
+    <section id="finalSection" class="full-screen animate__animated animate__zoomIn">
+        <div class="lily-container mb-4">
+            <img src="img/lillies.png">
+        </div>
+        <h2 class="fancy-font mb-3">Ami tomake bhalobashi, Daniel Rahman Isbat</h2>
+        <div class="container" style="max-width: 700px;">
+            <p class="fs-4 italic px-3" style="line-height: 1.6;">
+                "Amar tmk always perfect, strong lagbe na. Ami chai, tmi shanti te thako. Tumi amake jotoi dure mone koro, ami tomar toto e kache howar try kori, distance amar jnno physically,, mentally, ami tomar ager darling e achi. Tmk just tmr bhoy chara dekhte hobe. Ami tmr sathe asi Isbat. Tmr pashei asi, ar ekhanei thakbo."
+            </p>
+            <h3 class="mt-4 fancy-font">— Tmr Darling</h3>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        function handleNo() {
+            alert("Wrong answer! 😤 There is no 'No' allowed in this house!");
+            
+            // Move the button randomly to be playful
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function handleYes() {
+            // Confetti with Kisses/Hearts
+            const duration = 5 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+              const timeLeft = animationEnd - Date.now();
+
+              if (timeLeft <= 0) {
+                return clearInterval(interval);
+              }
+
+              const particleCount = 50 * (timeLeft / duration);
+              // Confetti with shapes/colors
+              confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+              confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+              
+              // Custom "Kiss" and "Heart" emoji burst
+              confetti({
+                particleCount: 2,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                shapes: ['circle'],
+                colors: ['#ff0000', '#006a4e'],
+                scalar: 2
+              });
+            }, 250);
+
+            // Special Kiss Emojis
+            confetti({
+                particleCount: 40,
+                spread: 100,
+                origin: { y: 0.6 },
+                shapes: ['text'],
+                shapeOptions: {
+                    text: { value: ['💋', '❤️', '😘'] }
+                }
+            });
+
+            // Transition Sections
+            setTimeout(() => {
+                document.getElementById('questionSection').classList.add('hidden');
+                document.getElementById('photoSection').style.display = 'flex';
+            }, 1200);
+        }
+
+        function showFinal() {
+            document.getElementById('photoSection').classList.add('hidden');
+            document.getElementById('finalSection').style.display = 'flex';
+            
+            // Final small burst of hearts
+            confetti({
+                particleCount: 30,
+                scalar: 2,
+                shapes: ['text'],
+                shapeOptions: { text: { value: ['💙'] } }
+            });
+        }
+    </script>
+</body>
+</html>
